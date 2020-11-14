@@ -1,0 +1,41 @@
+<ul class="nav nav-tabs mr-auto">
+									<li class="nav-item">
+									  <a class="nav-link active" href="#home"
+										role="tab" data-toggle="tab">Home</a>
+									</li>
+									<li class="nav-item">
+									  <a class="nav-link" href="#insert" role="tab"
+										data-toggle="tab">Insert</a>
+									</li>
+									<li class="nav-item">
+										  <a class="nav-link" href="#design"role="tab"
+										data-toggle="tab">Design</a>
+									</li>
+									<li class="nav-item">
+										  <a class="nav-link" href="#layout" role="tab"
+										 data-toggle="tab">Layout</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#Refernces" role="tab"
+									   data-toggle="tab">References</a>
+									  </li>
+									  <li class="nav-item">
+									<a class="nav-link" href="#Mailing" role="tab"
+									   data-toggle="tab">Mailing</a>
+									   
+									  </li>
+									  <li class="nav-item">
+										<a class="nav-link" href="#Review" role="tab"
+									   data-toggle="tab">Review</a>
+								  </li>
+								  <li class="nav-item">
+									<a class="nav-link" href="#view" role="tab"
+								   data-toggle="tab">View</a>
+									  </li>
+									 <li class="nav-item">
+										<a class="nav-link" href="#help" role="tab"
+										   data-toggle="tab">Help</a>
+									  </li>
+								  
+				
+							</ul>

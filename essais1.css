@@ -85,3 +85,10 @@ table {
 	background: white;
 }
 
+.btn-group-vertical{
+	
+    border-right: 1px solid #ddd;
+    
+    padding: 10px;
+}
+

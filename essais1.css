@@ -34,15 +34,21 @@ table {
 	height: 20px;
 }
 
-.page {
+/* .page {
 	background-color: white;
 	height: 1000px;
 	width: auto;
-	/* margin: auto; */				/* To horizontally center a block element (like <div>), use margin: auto; */
+	
 	margin: 30px;
 	padding: 60px;
 	
 
+} */
+
+.container{
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
 }
 
 
@@ -92,3 +98,10 @@ table {
     padding: 10px;
 }
 
+textarea{
+	resize: none;
+	width: auto;
+	height: 600px;
+	padding: 10px 10px 10px 10px;
+	overflow: hidden;
+}

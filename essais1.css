@@ -34,19 +34,19 @@ table {
 	height: 20px;
 }
 
-/* .page {
+.page {
 	background-color: white;
 	height: 1000px;
 	width: auto;
-	
+	padding: 10px 10px 10px 10px;
 	margin: 30px;
 	padding: 60px;
 	
 
-} */
+}
 
 .container{
-	display: flex;
+	
 	justify-content: center;
 	padding-top: 20px;
 }
@@ -98,10 +98,16 @@ table {
     padding: 10px;
 }
 
-textarea{
+/* textarea{
 	resize: none;
 	width: auto;
 	height: 600px;
 	padding: 10px 10px 10px 10px;
 	overflow: hidden;
+} */
+
+
+
+input[type="checkbox"]{
+    display: none;
 }

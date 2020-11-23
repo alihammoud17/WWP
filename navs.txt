@@ -39,3 +39,23 @@
 								  
 				
 							</ul>
+
+
+
+
+
+
+							<label for="sel1">Font</label>
+								<label for="sel2"></label>
+								<select class="form-control" id="sel1">
+									<option value="calibri">Calibri</option>
+									<option value="calibri">Arial</option>
+									<option value="calibri">Times New Roman</option>
+									<option value="calibri">Comic Sans</option>
+								</select>
+								<select class="form-control" id="sel2">
+									<option value="calibri">10</option>
+									<option value="calibri">20</option>
+									<option value="calibri">30</option>
+									<option value="calibri">40</option>
+								</select>

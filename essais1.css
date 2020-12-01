@@ -3,14 +3,6 @@ body {
 	background-color: rgb(223, 227, 229);
 }
 
-table {
-	width: 100%;
-	top: -10;
-	margin: 0 auto;
-	margin-left: auto;
-	margin-right: auto;
-}
-
 
 .options {
 	background-color: rgb(230, 237, 250);
@@ -22,11 +14,10 @@ table {
 }
 
 
-.sticky {
-  position: fixed;
-  top: -2;
-  width: 98.8%;
-  
+#nav
+{
+	position: sticky;
+	top: 0px;
 }
 
 .img-fluid{
@@ -38,9 +29,8 @@ table {
 	background-color: white;
 	height: 1000px;
 	width: auto;
-	padding: 10px 10px 10px 10px;
-	margin: 30px;
-	padding: 60px;
+	margin: 70px;
+	padding: 70px;
 	
 
 }
@@ -53,11 +43,24 @@ table {
 
 
 .jumbotron{
-	padding: 70px 30px 70px 30px;
-    margin: 0px auto;
-    background:blue;
+    background: blue;
     color: white;
+	padding: 10px;			/* padding c'est l'écart entre le texte à l'intérieur du rectangle (bleu) et les bords internes de ce rectangle */
+	margin: 3px;			/* margin c'est l'écart entre le rectangle (bleu) et les autres éléments à l'extérieur */
+	border-radius: 10px;
 }
+
+
+.alignement
+{
+	text-align: center;	
+}
+.hauteur
+{
+	height: 125px;
+}
+
+
 
 .nav-tabs{
 	background: blue;
@@ -66,6 +69,8 @@ table {
 }
 
 
+
+/********************************/
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 10px;

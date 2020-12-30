@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css"/>
 		<link rel="stylesheet" href="system-google-font-picker/jquery.fontselect.min.css"/>
 		<link rel="stylesheet" href="system-google-font-picker/jquery.fontselect.css"/>
+		<link rel="stylesheet" href="node_modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css" />
 		<link rel="stylesheet" href="essais1.css"/>
 		<link rel="icon" href="logo.jpg"/>
 		<title>Online Microsoft Word</title>
@@ -79,7 +80,7 @@
 			
 				<!-- Home -->
 				<div role="tabpanel" class="tab-pane fade show" id="home">		<!-- class="tab-pane fade show active" -->
-					<div class="btn-group-vertical align-items-center" role="group">
+					<div class="btn-group align-items-center" role="group">
 						
 						<form class="hauteur">
 							<div class="form-group">
@@ -87,14 +88,14 @@
 								<div class="btn-group-toggle btn-group-lg" role="group">
 								
 									<!-- Cut -->
-									<button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="bottom" title="Cut">
+									<button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="bottom" title="Cut" onclick="document.execCommand('cut')">
 										<svg width="1em" height="1.5em" viewBox="2 3 12 12" class="bi bi-scissors" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 											<path fill-rule="evenodd" d="M3.5 3.5c-.614-.884-.074-1.962.858-2.5L8 7.226 11.642 1c.932.538 1.472 1.616.858 2.5L8.81 8.61l1.556 2.661a2.5 2.5 0 1 1-.794.637L8 9.73l-1.572 2.177a2.5 2.5 0 1 1-.794-.637L7.19 8.61 3.5 3.5zm2.5 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm7 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
 										</svg>
 									</button>
 									
 									<!-- Copy -->
-									<button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-html="true" data-placement="bottom" title="Copy">
+									<button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-html="true" data-placement="bottom" title="Copy" onclick="document.execCommand('copy')">
 										<svg width="1em" height="1.5em" viewBox="2 2 13 13" class="bi bi-files" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 											<path fill-rule="evenodd" d="M4 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4z"/>
 											<path d="M6 0h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1H4a2 2 0 0 1 2-2z"/>
@@ -102,7 +103,7 @@
 									</button>
 									
 									<!-- Paste -->
-									<button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="bottom" title="Paste">
+									<button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="bottom" title="Paste" onclick="paste(this)">
 										<svg width="1em" height="1.5em" viewBox="1 3 14 12" class="bi bi-clipboard-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 											<path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
 											<path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zm4.354 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -117,44 +118,50 @@
 					
 					
 					
-					<div class="btn-group-vertical align-items-start" role="group">
+					<div class="btn-group align-items-start" role="group">
 						<form class="hauteur">
-							<label for="sel1">Font</label>
+							<label>Font</label>
 							<div class="form-group row">
+								<div class="col-8 col-sm-8">
+									<input id="font-picker" type="text">
+								</div>
+								<div class="col col-sm">
+									<button class="btn btn-primary" id='decrease' type="button">
+										<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+										  </svg>
+									</button>
+									<button class="btn btn-primary" id='increase' type="button">
+										<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+										  </svg>
+									</button>
+								</div>
 								
-								<div class="col-12 col-sm-8">
-									<input id="fonts" type="text">
-								</div>
-								<div class="col-12 col-sm">
-									<select class="form-control" id="sel1">
-										<option value="calibri">10</option>
-										<option value="calibri">20</option>
-										<option value="calibri">30</option>
-										<option value="calibri">40</option>
-									</select>
-								</div>
+					
 							</div>
+							
 		
 							<div class="form-group row">
 								<div class="col-12 col-sm-6">
-									<div class="btn-group" role="group">
+									<div class="btn" role="group">
 									
 										<!-- Bold -->
-										<button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="bottom" title="Bold" id="bold" onclick="document.execCommand('bold',false,null);">
+										<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Bold" id="bold" onclick="document.execCommand('bold',false,null);">
 											<svg width="1em" height="1em" viewBox="2 3 11 11" class="bi bi-type-bold" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 												<path d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z"/>
 											</svg>
 										</button>
 										
 										<!-- Italic -->
-										<button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="bottom" title="Italic" id="italic" onclick="document.execCommand('italic',false,null);">
+										<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Italic" id="italic" onclick="document.execCommand('italic',false,null);">
 											<svg width="1em" height="1em" viewBox="2 3 11 11" class="bi bi-type-italic" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 												<path d="M7.991 11.674L9.53 4.455c.123-.595.246-.71 1.347-.807l.11-.52H7.211l-.11.52c1.06.096 1.128.212 1.005.807L6.57 11.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z"/>
 											</svg>
 										</button>
 										
 										<!-- Underlined -->
-										<button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="bottom" title="Underlined" id="underline" onclick="document.execCommand('underline',false,null);">	
+										<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Underlined" id="underline" onclick="document.execCommand('underline',false,null);">	
 											<svg width="1em" height="1em" viewBox="2 3 11 11" class="bi bi-type-underline" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 												<path d="M5.313 3.136h-1.23V9.54c0 2.105 1.47 3.623 3.917 3.623s3.917-1.518 3.917-3.623V3.136h-1.23v6.323c0 1.49-.978 2.57-2.687 2.57-1.709 0-2.687-1.08-2.687-2.57V3.136z"/>
 												<path fill-rule="evenodd" d="M12.5 15h-9v-1h9v1z"/>
@@ -162,7 +169,7 @@
 										</button>
 										
 										<!-- Strikethrough -->
-										<button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="bottom" title="Strikethrough" id="strikethrough" onclick="document.execCommand('strikethrough',false,null);">
+										<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Strikethrough" id="strikethrough" onclick="document.execCommand('strikethrough',false,null);">
 											<svg width="1em" height="1em" viewBox="2 3 11 11" class="bi bi-type-strikethrough" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 												<path d="M8.527 13.164c-2.153 0-3.589-1.107-3.705-2.81h1.23c.144 1.06 1.129 1.703 2.544 1.703 1.34 0 2.31-.705 2.31-1.675 0-.827-.547-1.374-1.914-1.675L8.046 8.5h3.45c.468.437.675.994.675 1.697 0 1.826-1.436 2.967-3.644 2.967zM6.602 6.5H5.167a2.776 2.776 0 0 1-.099-.76c0-1.627 1.436-2.768 3.48-2.768 1.969 0 3.39 1.175 3.445 2.85h-1.23c-.11-1.08-.964-1.743-2.25-1.743-1.23 0-2.18.602-2.18 1.607 0 .31.083.581.27.814z"/>
 												<path fill-rule="evenodd" d="M15 8.5H1v-1h14v1z"/>
@@ -170,7 +177,52 @@
 										</button>
 									
 									</div>
+									
+								
 								</div>
+								
+								<div class="col-12 col-sm">
+									<div class="btn" role="button">
+										<div id="colorPick"></div>
+									</div>
+								</div>
+								
+							</div>
+						</form>
+					</div>
+					<div class="btn-group align-items-start" role="group">
+						<form class="hauteur">
+							<label>Paragraphs</label>
+							<div class="form-group row">
+								
+								<div class="col-12 col-sm-6">
+									<div class="btn" role="group">
+									
+										<!-- left -->
+										<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Left Align" id="left" onclick="document.execCommand('bold',false,null);">
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-left" viewBox="0 0 16 16">
+												<path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+											</svg>
+										</button>
+										
+										<!-- middle -->
+										<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Center Align" id="center" onclick="document.execCommand('italic',false,null);">
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-center" viewBox="0 0 16 16">
+												<path fill-rule="evenodd" d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+											</svg>
+										</button>
+										
+										<!-- right -->
+										<button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Right Align" id="right" onclick="document.execCommand('underline',false,null);">	
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-right" viewBox="0 0 16 16">
+												<path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+											</svg>
+										</button>
+										
+										
+										
+									
+									</div>
 							</div>
 						</form>
 					</div>
@@ -191,9 +243,12 @@
 		</div> 
 		
 		<!-- Page -->
-		<div class="container justify-content-center">			
-			<div class="page" id="pageWrite" contenteditable="true">
-			</div>
+		<div class="container justify-content-center">
+			
+				<div class="page" id="pageWrite" contenteditable="true">
+				
+			</div>		
+			
 		</div>
 		
 
@@ -206,6 +261,7 @@
 		<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="system-google-font-picker/jquery.fontselect.js"></script>
 		<script src="system-google-font-picker/jquery.fontselect.min.js"></script>
+		<script src="colorpalettepicker.js"></script>
 
 		<script>
 			function applyFont(font) {
@@ -220,16 +276,57 @@
 				var fontFamily = font[0];
 				var fontWeight = font[1] || 400;
 
-		// Set selected font on paragraphs
+		// Set selected font on whole page
 			  $('#pageWrite').css({fontFamily:"'"+fontFamily+"'", fontWeight:fontWeight});
 			}
 			
-			$('#fonts').fontselect().on('change',function(){
+			$('#font-picker').fontselect().on('change',function(){
 				applyFont(this.value);
+			}); 
+
+			
+
+			// console.log(window.getSelection().toString());
+
+			$(document).ready(function(){
+  
+  				var fontSize = 3;
+  
+  				$('#decrease').click(function(){
+    				if (fontSize > 1)
+      				fontSize--;
+    				document.execCommand("fontSize", false, fontSize);
+ 				});
+  
+  				$('#increase').click(function(){
+    				if (fontSize < 7)
+      				fontSize++;
+    				document.execCommand("fontSize", false, fontSize);
+  				});
 			});
 
+			$('#colorPick').colorPalettePicker({
+				button: '<button name="colorpalettebutton" class="{buttonClass}" data-toggle="dropdown"><span name="{buttonPreviewName}" style="display:none">■ </span>{buttonText}</button>',
+				buttonClass: 'btn btn-primary dropdown-toggle',
+				buttonPreviewName: 'colorpaletteselected',
+				buttonText: 'Color',
+				dropdown: '<div class="dropdown-menu"><h5 class="dropdown-header text-center">{dropdownTitle}</h5>',
+				dropdownTitle:'Available colors',
+				menu: '<ul class="list-inline" style="padding-left:10px;padding-right:10px">',
+				item: '<li class="list-inline-item"><div name="picker_{name}" style="background-color:{color};width:32px;height:32px;border-radius:5px;border: 1px solid #666;margin: 0px;cursor:pointer" data-toggle="tooltip" title="{name}" data-color="{color}"></div></li>',
+				onSelected: function(color){
+					document.execCommand('styleWithCSS', false, true);
+    				document.execCommand('foreColor', false, color);
+  				}
+			});
 
-			///////////////////////////////////
+			
+
+			async function paste(input) {
+				const text = await navigator.clipboard.readText();
+				input.value = text;
+			}
+
 
 			
 		</script>
